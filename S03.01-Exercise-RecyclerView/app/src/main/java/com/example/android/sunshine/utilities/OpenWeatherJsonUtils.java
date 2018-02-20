@@ -49,17 +49,20 @@ public final class OpenWeatherJsonUtils {
         /* Weather information. Each day's forecast info is an element of the "list" array */
         final String OWM_LIST = "list";
 
-        /* All temperatures are children of the "temp" object */
-        final String OWM_TEMPERATURE = "temp";
+        /* All temperatures are children of the "main" object */
+        final String OWM_TEMPERATURE = "main";
 
         /* Max temperature for the day */
-        final String OWM_MAX = "max";
-        final String OWM_MIN = "min";
+        final String OWM_MAX = "temp_max";
+        final String OWM_MIN = "temp_min";
 
         final String OWM_WEATHER = "weather";
         final String OWM_DESCRIPTION = "main";
 
         final String OWM_MESSAGE_CODE = "cod";
+
+        /* Date text */
+        final String OWM_DT = "dt_txt";
 
         /* String array to hold each day's weather String */
         String[] parsedWeatherData = null;
@@ -86,16 +89,16 @@ public final class OpenWeatherJsonUtils {
 
         parsedWeatherData = new String[weatherArray.length()];
 
-        long localDate = System.currentTimeMillis();
-        long utcDate = SunshineDateUtils.getUTCDateFromLocal(localDate);
-        long startDay = SunshineDateUtils.normalizeDate(utcDate);
+//        long localDate = System.currentTimeMillis();
+//        long utcDate = SunshineDateUtils.getUTCDateFromLocal(localDate);
+//        long startDay = SunshineDateUtils.normalizeDate(utcDate);
 
         for (int i = 0; i < weatherArray.length(); i++) {
             String date;
             String highAndLow;
 
             /* These are the values that will be collected */
-            long dateTimeMillis;
+//            long dateTimeMillis;
             double high;
             double low;
             String description;
@@ -103,12 +106,14 @@ public final class OpenWeatherJsonUtils {
             /* Get the JSON object representing the day */
             JSONObject dayForecast = weatherArray.getJSONObject(i);
 
+            date = dayForecast.getString(OWM_DT);
+
             /*
              * We ignore all the datetime values embedded in the JSON and assume that
              * the values are returned in-order by day (which is not guaranteed to be correct).
              */
-            dateTimeMillis = startDay + SunshineDateUtils.DAY_IN_MILLIS * i;
-            date = SunshineDateUtils.getFriendlyDateString(context, dateTimeMillis, false);
+//            dateTimeMillis = startDay + SunshineDateUtils.DAY_IN_MILLIS * i;
+//            date = SunshineDateUtils.getFriendlyDateString(context, dateTimeMillis, false);
 
             /*
              * Description is in a child array called "weather", which is 1 element long.
