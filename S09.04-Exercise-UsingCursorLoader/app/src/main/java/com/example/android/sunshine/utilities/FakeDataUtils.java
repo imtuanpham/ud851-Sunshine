@@ -43,7 +43,7 @@ public class FakeDataUtils {
         long today = SunshineDateUtils.normalizeDate(System.currentTimeMillis());
         List<ContentValues> fakeValues = new ArrayList<ContentValues>();
         //loop over 7 days starting today onwards
-        for(int i=0; i<7; i++) {
+        for(int i=0; i<70; i++) {
             fakeValues.add(FakeDataUtils.createTestWeatherContentValues(today + TimeUnit.DAYS.toMillis(i)));
         }
         // Bulk Insert our new weather data into Sunshine's Database
