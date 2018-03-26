@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<android.support.constraint.ConstraintLayout-->
+    <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--xmlns:tools="http://schemas.android.com/tools"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:minHeight="?android:attr/listPreferredItemHeight"-->
+    <!--android:paddingBottom="12dp"-->
+    <!--android:paddingLeft="16dp"-->
+    <!--android:paddingRight="16dp"-->
+    <!--android:paddingTop="12dp">-->
+
+    <!--<ImageView-->
+        <!--android:id="@+id/weather_icon"-->
+        <!--android:layout_width="40dp"-->
+        <!--android:layout_height="40dp"-->
+        <!--android:layout_marginLeft="60dp"-->
+        <!--app:layout_constraintBottom_toTopOf="@+id/guideline"-->
+        <!--app:layout_constraintLeft_toLeftOf="parent"-->
+        <!--app:layout_constraintTop_toTopOf="@+id/guideline"-->
+        <!--app:layout_constraintVertical_bias="0.525"-->
+        <!--tools:src="@drawable/art_clouds" />-->
+
+    <!--<TextView-->
+        <!--android:id="@+id/date"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--tools:layout_editor_absoluteX="126dp"-->
+        <!--tools:layout_editor_absoluteY="0dp"-->
+        <!--tools:text="Today, April 03" />-->
+
+    <!--<TextView-->
+        <!--android:id="@+id/weather_description"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginLeft="32dp"-->
+        <!--android:layout_marginTop="24dp"-->
+        <!--app:layout_constraintLeft_toLeftOf="@+id/date"-->
+        <!--app:layout_constraintTop_toTopOf="@+id/guideline"-->
+        <!--tools:text="Rainy" />-->
+
+    <!--<TextView-->
+        <!--android:id="@+id/high_temperature"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:textSize="28dp"-->
+        <!--tools:layout_editor_absoluteX="250dp"-->
+        <!--tools:layout_editor_absoluteY="16dp"-->
+        <!--tools:text="19\u00b0" />-->
+
+    <!--<TextView-->
+        <!--android:id="@+id/low_temperature"-->
+        <!--android:layout_width="60dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:gravity="end"-->
+        <!--android:textSize="28dp"-->
+        <!--tools:layout_editor_absoluteX="232dp"-->
+        <!--tools:layout_editor_absoluteY="56dp"-->
+        <!--tools:text="10\u00b0" />-->
+
+    <!--<android.support.constraint.Guideline-->
+        <!--android:id="@+id/guideline"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="horizontal"-->
+        <!--app:layout_constraintBottom_toTopOf="parent"-->
+        <!--app:layout_constraintEnd_toStartOf="parent"-->
+        <!--app:layout_constraintGuide_percent="0.5"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--</android.support.constraint.ConstraintLayout>-->
+
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="16dp"
+    android:paddingTop="16dp">
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+     - This Guideline divides the screen into a left half and a right half and is used to        -
+     - anchor the views to the middle of the screen.                                             -
+     - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <android.support.constraint.Guideline
+        android:id="@+id/horizontal_middle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5"
+        tools:layout_editor_absoluteX="192dp"
+        tools:layout_editor_absoluteY="0dp"/>
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+     - Today's date                                                                              -
+     -                                                                                           -
+     - You may notice that the line android:fontFamily="sans-serif" is highlighted in yellow.    -
+     - The reason for the highlighted line is that the fontFamily attribute is not available on  -
+     - versions of Android before 16, and our minimum supported version of Android is 10. This   -
+     - particular issue won't break the app, but you should note that this attribute will be     -
+     - ignored on devices that run an Android version less than 16.                              -
+     - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/weather_icon"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:text="Today, April 03"/>
+
+    <!-- Icon indicating weather condition -->
+    <ImageView
+        android:id="@+id/weather_icon"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:adjustViewBounds="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/horizontal_middle"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/art_clouds"/>
+
+    <!-- Text that describes weather condition -->
+    <TextView
+        android:id="@+id/weather_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textSize="20sp"
+        app:layout_constraintHorizontal_bias="0.52"
+        app:layout_constraintLeft_toLeftOf="@+id/weather_icon"
+        app:layout_constraintRight_toRightOf="@+id/weather_icon"
+        app:layout_constraintTop_toBottomOf="@+id/weather_icon"
+        tools:text="Rainy"/>
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+     - High temperature for today                                                                -
+     -                                                                                           -
+     - You may notice that the line android:fontFamily="sans-serif" is highlighted in yellow.    -
+     - The reason for the highlighted line is that the fontFamily attribute is not available on  -
+     - versions of Android before 16, and our minimum supported version of Android is 10. This   -
+     - particular issue won't break the app, but you should note that this attribute will be     -
+     - ignored on devices that run an Android version less than 16.                              -
+     - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <TextView
+        android:id="@+id/high_temperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="72sp"
+        app:layout_constraintBottom_toBottomOf="@+id/weather_icon"
+        app:layout_constraintHorizontal_bias="0.45"
+        app:layout_constraintLeft_toLeftOf="@+id/horizontal_middle"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/weather_icon"
+        tools:text="19\u00b0"/>
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+     - Low temperature for today                                                                 -
+     -                                                                                           -
+     - You may notice that the line android:fontFamily="sans-serif" is highlighted in yellow.    -
+     - The reason for the highlighted line is that the fontFamily attribute is not available on  -
+     - versions of Android before 16, and our minimum supported version of Android is 10. This   -
+     - particular issue won't break the app, but you should note that this attribute will be     -
+     - ignored on devices that run an Android version less than 16.                              -
+     - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <TextView
+        android:id="@+id/low_temperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="36sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/weather_description"
+        app:layout_constraintLeft_toLeftOf="@+id/high_temperature"
+        app:layout_constraintRight_toRightOf="@+id/high_temperature"
+        tools:text="10\u00b0"/>
+
+</android.support.constraint.ConstraintLayout>
